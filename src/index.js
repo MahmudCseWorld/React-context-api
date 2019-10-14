@@ -1,14 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import Navbar from "./Navbar";
+import Form from "./Form";
 
 import "./styles.css";
 
 function App() {
   return (
-    <div>
+    <>
       <Navbar />
-    </div>
+      <Form />
+    </>
   );
 }
 
