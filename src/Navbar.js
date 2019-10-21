@@ -1,7 +1,6 @@
-import React, { Component } from "react";
+import React, { useContext } from "react";
 import SearchIcon from "@material-ui/icons/Search";
 import { withStyles } from "@material-ui/core/styles";
-import { flag, code, name, countries } from "country-emoji";
 import {
   AppBar,
   Toolbar,
@@ -11,7 +10,7 @@ import {
   Switch
 } from "@material-ui/core";
 import { ThemeContext } from "./contexts/ThemeContext";
-import { withLangugaeContext } from "./contexts/LanguageContext";
+import { LanguageContext} from "./contexts/LanguageContext";
 import Styles from "./styles/NavbarStyles";
 
 const content = {
@@ -29,12 +28,10 @@ const content = {
   }
 };
 
-class Navbar extends Component {
-  static contextType = ThemeContext;
-  render() {
-    const { classes } = this.props;
-    const { isDarkMode, toggleTheme } = this.context;
-    const { language } = this.props.languageContext;
+function Navbar(props) {
+    const { classes } = props;
+    const { isDarkMode, toggleTheme } = useContext(ThemeContext); 
+  const { language } = useContext(LanguageContext); 
     const { search, flag } = content[language];
     return (
       <div className={classes.root}>
@@ -64,7 +61,6 @@ class Navbar extends Component {
         </AppBar>
       </div>
     );
-  }
 }
 
-export default withLangugaeContext(withStyles(Styles)(Navbar));
+export default withStyles(Styles)(Navbar);

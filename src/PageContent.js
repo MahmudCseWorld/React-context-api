@@ -7,8 +7,8 @@ class PageContent extends Component {
     const { isDarkMode } = this.context;
     const styles = {
       backgroundColor: isDarkMode ? "black" : "white",
-      weidth: "100vw",
-      hieght: "100vh"
+      width: "calc (100vw - 3px)",
+      height: "calc(100vh - 20px)",
     };
     return <div style={styles}>{this.props.children}</div>;
   }
