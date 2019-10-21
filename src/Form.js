@@ -1,3 +1,4 @@
+import React, { useContext } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import Checkbox from "@material-ui/core/Checkbox";
@@ -11,7 +12,6 @@ import Select from "@material-ui/core/Select";
 import withStyles from "@material-ui/core/styles/withStyles";
 import Typography from "@material-ui/core/Typography";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
-import React, { Component } from "react";
 import { LanguageContext } from "./contexts/LanguageContext";
 import styles from "./styles/FormStyles";
 
@@ -35,14 +35,11 @@ const words = {
     remember: "Recuérdame"
   }
 };
-
-class Form extends Component {
-  static contextType = LanguageContext;
-  render() {
-    const { classes } = this.props;
-    const { language, languageChange } = this.context;
+const Form = (props) => {
+  const { classes } = props;
+    const { language, languageChange } = useContext(LanguageContext);
     const { email, signIn, password, remember } = words[language];
-    return (
+  return (
       <main className={classes.main}>
         <Paper className={classes.paper}>
           <Avatar className={classes.avater}>
@@ -79,8 +76,7 @@ class Form extends Component {
           </form>
         </Paper>
       </main>
-    );
-  }
+  )
 }
 
 export default withStyles(styles)(Form);
